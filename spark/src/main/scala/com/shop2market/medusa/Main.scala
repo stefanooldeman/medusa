@@ -1,9 +1,11 @@
 package com.foobar.medusa
 
-import org.apache.spark.SparkContext
-
-import org.apache.spark.ml.feature.{HashingTF, Tokenizer}
+import org.apache.spark.mllib.classification.NaiveBayes
+import org.apache.spark.mllib.feature.{HashingTF, IDF}
 import org.apache.spark.mllib.linalg.Vector
+import org.apache.spark.mllib.regression.LabeledPoint
+import org.apache.spark.rdd.RDD
+import org.apache.spark.SparkContext
 import scala.collection.mutable
 
 
@@ -17,8 +19,8 @@ object Main extends App {
   val categories = rawblocks.map(_.split('|')(0)).cache
   // create Map[String, Double] for the categories.
   var (labelMap, _) = categories.distinct().collect().foldLeft((Map.empty[String,Double], 0.0)) { (data, elem) =>
-  val (acc,n) = data; val i = n+1;
-  (acc + (elem -> i), i)
+    val (acc,n) = data; val i = n+1;
+    (acc + (elem -> i), i)
   }
   val labels = categories.map(labelMap(_))
   // get all teh text / terms
