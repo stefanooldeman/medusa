@@ -3,6 +3,7 @@
 import csv
 import re
 import sys
+import os
 import Stemmer
 
 
@@ -22,6 +23,8 @@ class ParseFromCSV(object):
             reader = csv.DictReader(f, delimiter=',')
             for row in reader:
                 twotuple = self.parse(row)
+                if twotuple:
+                    sys.stdout.write("%s|%s\n" % twotuple)
 
     def parse(self, row):
         label = row.get('g:google_product_category').strip()
@@ -43,7 +46,10 @@ class ParseFromCSV(object):
         return filter(match, words)
 
     def init_stopwords(self):
-        filename = "stopwords/%s.txt" % self.language 
+        p = os.path
+        basepath = p.dirname(p.abspath(__file__))
+        filename = "%s/stopwords/%s.txt" % (basepath, self.language)
+        # get list of words and remove \n
         words = open(filename, 'r').readlines()
         stopwords = map(lambda x: x.strip(), words)
         return stopwords
