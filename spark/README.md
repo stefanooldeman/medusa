@@ -16,6 +16,16 @@ and import the clas you need, for example Dictionary
 
 This workflow is not fast enough for testing, for that a testing lib will be needed.
 
+# Run.....
+
+```
+# prepare
+./tools/from_csv.py channel_feed.csv > data/somename.txt
+
+# do it!
+sbt build
+spark-submit --class com.foobar.medusa.Main --deploy-mode client target/scala-2.10/medusa_2.10-1.0.jar
+```
 
 ## Get Data
 
