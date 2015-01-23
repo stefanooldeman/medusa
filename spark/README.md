@@ -32,3 +32,14 @@ To process such feed download it to the data directory and run:
   `./tools/from_csv.py channel_feed.csv > mydata.txt
 
 The Main package will pick any files present in the data directory
+
+## Stemming
+
+for Stemming (http://snowball.tartarus.org/texts/introduction.html)
+A paper that comes with the package Snowball says:
+
+> Rijsbergen (1979, Chapter 2) assumes document text analysis: stopwords are removed, the remaining words are stemmed, and the resulting set of stemmed word constitute the IR index (and this style of use is widespread today).
+
+This is done in the `from_csv.py`.. but in production we can use Java or a differnt C interface / wrapper.
+For prototype purposes this works fast enough.
+
