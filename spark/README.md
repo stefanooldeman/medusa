@@ -24,7 +24,7 @@ This workflow is not fast enough for testing, for that a testing lib will be nee
 
 # do it!
 sbt build
-spark-submit --class com.foobar.medusa.Main --deploy-mode client target/scala-2.10/medusa_2.10-1.0.jar
+spark-submit --class com.foobar.medusa.Main --deploy-mode client target/scala-2.10/medusa_2.10-1.0.jar --driver-memory 5g
 ```
 
 ## Get Data
