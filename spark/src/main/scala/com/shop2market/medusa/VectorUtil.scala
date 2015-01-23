@@ -1,5 +1,3 @@
-package com.foobar.medusa
-
 import com.google.common.collect.ImmutableBiMap
 import scala.collection.JavaConversions._
 import org.apache.spark.mllib.linalg.Vectors
