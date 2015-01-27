@@ -27,8 +27,8 @@ class ParseFromCSV(object):
                     sys.stdout.write("%s|%s\n" % twotuple)
 
     def parse(self, row):
-        label = row.get('g:google_product_category').strip()
-        terms = row.get('description').strip()
+        label = row.get('g:google_product_category', '').strip()
+        terms = row.get('description', '').strip()
         if terms and label and label.find('>') is not -1:
             words = filter_re.sub('', terms).lower().split(' ')
             # if not lowercased, stopwords won't always be matched

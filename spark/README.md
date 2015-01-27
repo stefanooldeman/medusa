@@ -14,7 +14,7 @@ note the executor-memory is per node
 $ spark-shell --master spark://localhost:7077 --executor-memory 4g --jars target/scala-2.10/medusa_2.10-1.0.jar 2> debug.log
 
 scala> 
-import com.foobar.medusa._
+import com.shop2market.medusa._
 val rawblocks = sc.textFile("data")
 val categories = new CategoryVectors(rawblocks)
 
@@ -35,7 +35,7 @@ categories.predict(vectors, bModel.value)
 
 # do it!
 sbt build
-spark-submit --class com.foobar.medusa.Main --deploy-mode client target/scala-2.10/medusa_2.10-1.0.jar --driver-memory 5g
+spark-submit --class com.shop2market.medusa.Main --deploy-mode client target/scala-2.10/medusa_2.10-1.0.jar --driver-memory 5g
 ```
 
 ## Get Data

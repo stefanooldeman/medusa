@@ -1,4 +1,4 @@
-package com.foobar.medusa
+package com.shop2market.medusa
 
 import org.apache.spark.SparkContext._
 // important! the above import ensures implicit type conversions. 

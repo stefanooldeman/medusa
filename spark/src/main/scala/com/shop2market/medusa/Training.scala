@@ -1,4 +1,4 @@
-package com.foobar.medusa
+package com.shop2market.medusa
 
 import scala.collection.mutable
 
@@ -37,7 +37,7 @@ class CategoryVectors(data: RDD[String]) extends Serializable {
   val labels = categories.map(labelMap(_))
 
   // step 2: Transform terms
-  val terms: RDD[Seq[String]] = data.map { x => 
+  val terms: RDD[Seq[String]] = data.map { x =>
       tokanize(x.split('|')(1))
   }
   val tfidf = to_tf_idf(terms)
